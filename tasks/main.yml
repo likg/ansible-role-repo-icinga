@@ -1,0 +1,30 @@
+---
+# repo-icinga/tasks/main.yml
+
+- name: include OS-specific variables
+  include_vars: '{{ item }}'
+  with_first_found:
+    - '{{ ansible_distribution }}.yml'
+    - '{{ ansible_os_family }}.yml'
+    - 'main.yml'
+  tags:
+    - repo_icinga
+    - vars
+    - repos
+    - packages
+
+- include_tasks: setup-RedHat.yml
+  when:
+    - ansible_os_family == 'RedHat'
+    - ansible_pkg_mgr == 'yum'
+  tags:
+    - repo_icinga
+    - packages
+
+- include_tasks: setup-Debian.yml
+  when:
+    - ansible_os_family == 'Debian'
+    - ansible_pkg_mgr == 'apt'
+  tags:
+    - repo_icinga
+    - packages

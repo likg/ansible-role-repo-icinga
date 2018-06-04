@@ -1,0 +1,25 @@
+---
+# repo-icinga/tasks/setup-RedHat.yml
+
+- name: install required packages (python 2.6 case)
+  package:
+    name:  '{{ item }}'
+    state: present
+  with_items:
+    - pyOpenSSL
+    - python-pyasn1
+    - python-urllib3
+    - python2-ndg_httpsclient
+  when:
+    - ansible_python_version is version_compare('2.7.9', '<')
+    - ansible_distribution_major_version is version_compare('7', '<')
+
+- name: import Icinga repo GPG key
+  rpm_key:
+    key:   '{{ repo_icinga__gpg_key_url }}'
+    state: present
+
+- name: install Icinga repo
+  yum:
+    name:  '{{ repo_icinga__url }}'
+    state: present

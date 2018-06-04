@@ -1,0 +1,4 @@
+---
+# repo-icinga/vars/RedHat.yml
+
+repo_icinga__url: 'https://packages.icinga.com/epel/icinga-rpm-release-{{ ansible_distribution_major_version }}-latest.noarch.rpm'

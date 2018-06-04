@@ -1,0 +1,4 @@
+---
+# repo-icinga/vars/Debian.yml
+
+repo_icinga__url: 'deb https://packages.icinga.com/{{ ansible_distribution|lower }} icinga-{{ ansible_distribution_release|lower }} main'

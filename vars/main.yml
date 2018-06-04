@@ -1,0 +1,4 @@
+---
+# repo-icinga/vars/main.yml
+
+repo_icinga__url: ''

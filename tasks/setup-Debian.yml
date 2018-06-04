@@ -1,0 +1,43 @@
+---
+# repo-icinga/tasks/setup-Debian.yml
+
+- name: python 2.6 case
+  block:
+    - name: install required python packages
+      package:
+        name:  '{{ item }}'
+        state: present
+        update_cache: yes
+      with_items:
+        - python-urllib3
+        - python-openssl
+        - python-pyasn1
+        - python-pip
+
+    - name: install apt-key dependencies
+      pip:
+        name:  ndg-httpsclient
+        state: present
+  when:
+    - ansible_python_version is version_compare('2.7.9', '<')
+    - ansible_distribution_major_version is version_compare('16', '<')
+
+- name: install required packages
+  package:
+    name:  '{{ item }}'
+    state: present
+    update_cache: yes
+  with_items:
+    - apt-transport-https
+    - gnupg2
+
+- name: import Icinga repo GPG key
+  apt_key:
+    url:   '{{ repo_icinga__gpg_key_url }}'
+    state: present
+
+- name: install Icinga repo
+  apt_repository:
+    repo:  '{{ repo_icinga__url }}'
+    state: present
+    filename: icinga
