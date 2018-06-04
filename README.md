@@ -1,3 +1,4 @@
+[![Ansible Galaxy](https://img.shields.io/badge/role-likg.repo--icinga-blue.svg?style=flat)](https://galaxy.ansible.com/likg/repo-icinga/)
 [![Build Status](https://travis-ci.org/likg/ansible-role-repo-icinga.svg?branch=master)](https://travis-ci.org/likg/ansible-role-repo-icinga)
 
 # Ansible Role: Icinga2 repo
