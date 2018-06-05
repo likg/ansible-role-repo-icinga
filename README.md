@@ -15,12 +15,7 @@ Available variables/default values can be found in [defaults/main.yml](defaults/
 
 ## Dependencies
 
-None for Debian/Ubuntu. TODO: depend on yum-repo-epel role for RedHat
-
-```yaml
-dependencies:
-  - { role: likg.yum-repo-epel, when: ansible_os_family == 'RedHat' }
-```
+None for Debian/Ubuntu, `likg.yum-repo-epel` for RedHat.
 
 ## Example Playbook
 

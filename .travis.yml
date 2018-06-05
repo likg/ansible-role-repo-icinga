@@ -43,6 +43,7 @@ before_script:
   - printf 'localhost' > inventory
   - sudo ln -s /bin/true /usr/sbin/sendmail
   - ansible --version
+  - test -f requirements.yml && ansible-galaxy install -r requirements.yml
 
 script:
   - ansible-lint -v ${_ANSIBLE_PLAYBOOK}
