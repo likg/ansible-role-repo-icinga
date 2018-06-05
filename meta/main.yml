@@ -22,5 +22,5 @@ galaxy_info:
     - apt
     - yum
 
-#dependencies:
-#  - { role: likg.yum-repo-epel, when: ansible_os_family == 'RedHat' }
+dependencies:
+  - { role: likg.yum-repo-epel, when: ansible_os_family == 'RedHat' }
