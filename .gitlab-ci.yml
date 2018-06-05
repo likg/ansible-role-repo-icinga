@@ -78,7 +78,7 @@ variables:
     - printf 'localhost' > inventory
     - docker info
     - ansible --version
-    - test -f requirements.yml && ansible-galaxy install -r requirements.yml
+    - test -f requirements.yml && ansible-galaxy install -r requirements.yml || true
     - docker pull ${_DOCKER_IMAGE} || true
 
 .ansible_playbook: &ansible_playbook
