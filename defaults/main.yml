@@ -1,4 +1,4 @@
 ---
 # repo-icinga/defaults/main.yml
 
-repo_icinga__gpg_key_url: 'https://packages.icinga.org/icinga.key'
+repo_icinga__gpg_key_url: 'https://packages.icinga.com/icinga.key'
